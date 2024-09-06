@@ -4,32 +4,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Index</title>
 </head>
 
+<style>
+    body{
+
+height:90vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background-color:#383856;
+
+}
+.contain{
+
+width:300px;
+height:450px;
+
+background-color:rgb(255,255,255);
+text-align: center;
+border-radius: 3%;
+box-shadow: 0px 0px 50px #983b3b;
+
+
+
+}
+.inputfields{
+border-top: none;
+border-right: none;
+border-left:none;
+margin-bottom: 3%;
+}
+.btn{
+padding: 3% 6%;
+border-radius: 10px;
+background-color: #04bcc7;
+color:whitesmoke;
+border:none
+}
+.selectcity{
+border: none;
+
+}
+</style>
+
 <body>
+    <form  onsubmit="return validate()" class='contain'action="login.html">
     <h2>Registeration Page</h2>
-    <form action="login.html">
-        <p><input required type="text" name="name" placeholder="enter your name"></p>
-        <p><input required type="email" name="email" placeholder="enter your email"></p>
-        <p><input required type="password" name="password" placeholder="enter your password"></p>
-        <p><input required type="password" name="conform_password" placeholder="enter your conform your password"></p>
-        <select name="city">
-            <option value="  ">select your city</option>
-            <option value="vijayawada">vijayawada</option>
-            <option value="hyderbad">hyderbad</option>
-            <option value="banglore">banglore</option>
+    
+        <p><input class="inputfields"  type="text" id="name" name="name" placeholder="enter your name"></p>
+        <p><input class="inputfields" type="email" id="email" name="email" placeholder="enter your email"></p>
+        <p><input class="inputfields"type="password" id="password" name="password" placeholder="enter your password"></p>
+        <p><input class="inputfields"type="password" id="confirmPassword"name="confirmPassword" placeholder="confirm your password"></p>
+        <select class="selectcity" name="city" id="city">
+            <option value="">select your city</option>
+            <option value="Vijayawada">Vijayawada</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Banglore">Banglore</option>
         </select>
-        <p><textarea name="address" placeholder="enter  address"></textarea></p>
         <p>
-            <input required type="number" name="mobile_number" placeholder="enter your mobile_number" />
+            <input class="inputfields" id="mobile_number"  type="number" name="mobile_number" placeholder="enter your mobile_number" />
         </p>
-        <input  required  type="radio" name="gender"/>Male
-        <input type="radio" name="gender"/>Female
+
         <p><input required type="checkbox"> I accept terms and conditions</p>
-        <button>Register</button>
+        <p>Already have an account<a href="login.html"> login_here?</a></p>
+        <button class="btn">Register</button>
 
     </form>
+    <script>
+          function validate(){
+            var name=document.getElementById('name').value
+            var nameCheck=/^[a-zA-Z]+(?:[a-zA-Z\s]+)*$/      // * for not giving starting spaces an (?:) is method and \s for taking spaces AND + FOR REPEATING SAME WORDS AGAIN like likhith  i two times repeated )
+            var email=document.getElementById('email').value
+            var password=document.getElementById('password').value
+            var confirmPassword=document.getElementById('confirmPassword').value
+            var mobile_number=document.getElementById('mobile_number').value
+
+            var city=document.getElementById('city').value  
+             var emailCheck=/^[a-zA-Z0-9.]+@[a-zA-Z]+\.[a-z]{2,3}$/
+        var passwordCheck=/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,}$/
+            if (name=="" || name.length<3){                
+                alert("please enter your name")   
+                return false
+            }
+            if(!name.match(nameCheck)){
+                alert("name must carry alphabets")
+                return false
+            }
+
+            if(!email.match(emailCheck)){
+            alert("check your email")
+            return false
+        }
+        if(password==""){
+            alert("password can't be empty")
+            return false
+        }
+        if(!password.match(passwordCheck)){
+            alert("password must contain upper case lowercase special symbol and digit with 6+ character")
+            return false
+        }
+        if(city==""){
+            alert("select city")
+            return false
+        }
+        if (password!=confirmPassword){
+            alert("password and confirm password are not same")
+            return false
+        }
+        if (mobile_number.length<10 || mobile_number.length>10){
+            alert("mobile number length must be only 10 numbers")
+            return false
+        }
+         return true
+        }
+
+    </script>
     
 </body>
 

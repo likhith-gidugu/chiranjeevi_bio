@@ -4,8 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+         body{
+
+height:90vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background-color:#383856;
+
+}
+.contain{
+    
+    width:300px;
+height:300px;
+
+background-color:rgb(255,255,255);
+text-align: center;
+border-radius: 3%;
+box-shadow: 0px 0px 50px #983b3b;
+
+
+
+}
+.inputfields{
+    border-top: none;
+    border-right: none;
+    border-left:none;
+    margin-bottom: 3%;
+}
+.btn{
+padding: 3% 6%;
+border-radius: 10px;
+background-color: #04bcc7;
+color:whitesmoke;
+border:none
+}
+.selectcity{
+    border: none;
+    
+}
+    </style>
 </head>
 <body>
+    <form class="contain"onsubmit="return validate()" action="https://likhith-gidugu.github.io/chiranjeevi_bio/chiranjeevi_bio.html?username=likhithgidugu036%40gmail.com&password=dfgfdvb">
+        <h1>LOGIN PAGE</h1>
+    <p>
+    <input class="inputfields"type="email" placeholder="username" id="email" name="email"></p>
+    <p>
+        <input class="inputfields"type="text" placeholder="password" id="password" name="password"></p>
+        <p><select  class="selectcity"name="" id="city">
+            <option value="">Select city</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Vijayawada">Vijayawada</option>
+            <option value="Bangalore">Bangalore</option>
+
+        </select></p>
+        <p>Don't have an account<a href="index.html"> signup_here?</a></p>
+    <button class="btn">submit</button>
+</form>
+<script>
+    function validate(){
+        var email=document.getElementById('email').value
+        var password=document.getElementById('password').value
+        var city=document.getElementById('city').value
+        var emailCheck=/^[a-zA-Z0-9.]+@[a-zA-Z]+\.[a-z]{2,3}$/
+        var passwordCheck=/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,}$/
+        if(!email.match(emailCheck)){
+            alert("check your email")
+            return false
+        }
+        if(password==""){
+            alert("password can't be empty")
+            return false
+        }
+        if(!password.match(passwordCheck)){
+            alert("password must contain upper case lowercase special symbol and digit with 6+ character")
+            return false
+        }
+        if(city==""){
+            alert("select city")
+            return false
+        }
+        return true
+    }
+
+</script>
+</body>
+</html>
+<!-- <body>
     <form action="chiranjeevi_bio.html">
     <h2>login page</h2>
     <p><input required name="username"type="text" placeholder="enter username"/></p>
@@ -14,5 +101,4 @@
     <p>Don't have an account<a href="index.html"> signup_here?</a></p>
     <button>Login</button>
     <form>
-</body>
-</html>
+</body> -->
